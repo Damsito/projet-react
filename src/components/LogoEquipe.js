@@ -1,11 +1,15 @@
-function LogoEquipe({url, name}){
-    if(!url){
-        return null;
-    }
-    return <img
-        className="block object-cover object-center w-12 md:w-32 lg:w-48 rounded-lg"
-        src={url}
-        alt={name}
+function LogoEquipe({ url, name, width }) {
+  if (!url) {
+    return null;
+  }
+  let className = 'block object-cover object-center rounded-lg mx-auto';
+  className += width ? " " + width : " w-12 md:w-32 lg:w-48"
+  return (
+    <img
+      className={className}
+      src={url}
+      alt={name}
     />
+  );
 }
 export default LogoEquipe;

@@ -1,5 +1,6 @@
 import React from "react";
-function Input({ value, handleChange, submitButton }) {
+import VerticalList from "./VerticalList";
+function Input({ value, handleChange, submitButton, placeholder }) {
   return (
     <div className={"flex w-full justify-center"}>
       <form className="w-full max-w-sm mb-1 ">
@@ -7,8 +8,8 @@ function Input({ value, handleChange, submitButton }) {
           <input
             className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
             type="text"
-            placeholder="Match"
-            aria-label="Match"
+            placeholder={placeholder}
+            aria-label={placeholder}
             value={value}
             onChange={handleChange}
             onKeyDown={handleChange}
@@ -24,5 +25,8 @@ function Input({ value, handleChange, submitButton }) {
     </div>
   );
 }
+VerticalList.defaultProps = {
+  placeholder: "Match",
+};
 
 export default Input;
