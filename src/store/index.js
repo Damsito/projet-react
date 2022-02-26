@@ -1,5 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import {countriesSlice, favoritesSlice, matchesSlice, matchSlice, teamSlice} from "./slices";
+import {
+  countriesSlice,
+  favoritesSlice,
+  matchesSlice,
+  matchSlice,
+  teamSlice,
+} from "./slices";
 import {
   persistStore,
   persistReducer,
@@ -26,7 +32,7 @@ const persistedReducer = persistReducer(
     matches: matchesSlice.reducer,
     match: matchSlice.reducer,
     teams: teamSlice.reducer,
-    countries: countriesSlice.reducer
+    countries: countriesSlice.reducer,
   })
 );
 export const store = configureStore({

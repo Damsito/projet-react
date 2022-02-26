@@ -9,18 +9,18 @@ function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   let matchQueryTitle = searchParams.get("q") || "";
   let matchQueryCompetition = searchParams.get("competition") || "352";
-  function putAllQueryParameters({competition}){
-    let query
-    if(value){
-      query = {q: value}
+  function putAllQueryParameters({ competition }) {
+    let query;
+    if (value) {
+      query = { q: value };
     }
-    if(competition){
-      query = {...query, competition}
+    if (competition) {
+      query = { ...query, competition };
     }
-    console.log(query)
-    console.log(value)
-    console.log(competition)
-    setSearchParams(query)
+    console.log(query);
+    console.log(value);
+    console.log(competition);
+    setSearchParams(query);
   }
   const [value, setValue] = useState(matchQueryTitle);
   const [selectedValue, setSelectedValue] = useState(matchQueryCompetition);
@@ -28,16 +28,16 @@ function Home() {
   const handleChange = (event) => {
     setValue(event.target.value);
     if (event.key === "Enter") {
-      putAllQueryParameters({competition: selectedValue || null})
+      putAllQueryParameters({ competition: selectedValue || null });
     }
   };
   const handleChangeSelect = (event) => {
     setSelectedValue(event.target.value);
-    putAllQueryParameters({competition: event.target.value || selectedValue})
+    putAllQueryParameters({ competition: event.target.value || selectedValue });
   };
   const submitButton = (event) => {
     event.preventDefault();
-    putAllQueryParameters({competition: selectedValue || null})
+    putAllQueryParameters({ competition: selectedValue || null });
   };
   const dispatch = useDispatch();
   useEffect(() => {

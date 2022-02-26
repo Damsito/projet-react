@@ -1,5 +1,10 @@
 import { all, call, put, takeLatest } from "redux-saga/effects";
-import {countriesSlice, matchesSlice, matchSlice, teamSlice} from "./store/slices";
+import {
+  countriesSlice,
+  matchesSlice,
+  matchSlice,
+  teamSlice,
+} from "./store/slices";
 
 async function httpClient(url) {
   const response = await fetch(url);
@@ -56,7 +61,8 @@ function* watchMatch() {
 }
 function* watchTeams() {
   yield takeLatest("FETCH_TEAMS", fetchTeams);
-}function* watchCountries() {
+}
+function* watchCountries() {
   yield takeLatest("FETCH_COUNTRIES", fetchCountries);
 }
 
