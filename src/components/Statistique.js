@@ -1,6 +1,9 @@
 import React from "react";
 
 function Statistique({stat}){
+    if(!stat){
+        return null;
+    }
     function isDefined(text){
         return typeof text === 'number'
     }

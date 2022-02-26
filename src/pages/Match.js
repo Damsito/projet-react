@@ -14,21 +14,26 @@ function Match(){
     const match = useSelector((state) => state.match);
     let start_date = new Date(match.match_start).toLocaleDateString('fr-FR',
         { weekday:"long", year:"numeric", month:"short", day:"numeric", hour: "numeric", minute: "numeric"})
+    if(!match){
+        return null;
+    }
+    console.log(match)
     return (<div className={'text-center'}>
-        <h1>{match.group.group_name}</h1>
+        <h1 className={'text-md'}>{match.group.group_name}</h1>
         <Card match={match} />
-        <h1>Début du match : {start_date}</h1>
-        <h1>Lieu du match : {match.venue.name} - {match.venue.city}</h1>
-        <h1>Score du match à la mi-temps : {match.stats.ht_score}</h1>
-        <h1>Score du match final : {match.stats.ft_score}</h1>
+        <h1 className={'text-md'}>Début du match : {start_date}</h1>
+        {match.venue && match.venue.name && <h1>Lieu du match : {match.venue.name} - {match.venue.city}</h1>
+        }
+        <h1 className={'text-md'}>Score du match à la mi-temps : {match.stats.ht_score}</h1>
+        <h1 className={'text-md'}>Score du match final : {match.stats.ft_score}</h1>
         <div className={'grid grid-cols-2 gap-4 p-5 text-center'}>
             <div className={'home'}>
-                <Formation formation={match.lineups[0].formation} />
-                <Statistique stat={match.match_statistics[0]} />
+                <Formation formation={match.lineups.length > 0 && match.lineups[0].formation} />
+                <Statistique stat={match.match_statistics && match.match_statistics[0]} />
             </div>
             <div className={'away'}>
-                <Formation formation={match.lineups[1].formation} />
-                <Statistique stat={match.match_statistics[1]} />
+                <Formation formation={match.lineups.length > 0 && match.lineups[1].formation} />
+                <Statistique stat={match.match_statistics && match.match_statistics[1]} />
 
             </div>
 
