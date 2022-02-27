@@ -25,19 +25,19 @@ function Match() {
   }
   console.log(match);
   return (
-    <div className={"text-center"}>
-      <h1 className={"text-md"}>{match.group.group_name}</h1>
+    <div className={"text-center mt-3"}>
+      <h1 className={"md:text-md sm:text-sm lg:text-3xl"}><b>{match.group.group_name}</b></h1>
       <Card match={match} />
-      <h1 className={"text-md"}>Début du match : {start_date}</h1>
+      <h1 className={"md:text-md sm:text-sm lg:text-3xl"}>Début du match : {start_date}</h1>
       {match.venue && match.venue.name && (
-        <h1>
+        <h1 className={"md:text-md sm:text-sm lg:text-3xl"}>
           Lieu du match : {match.venue.name} - {match.venue.city}
         </h1>
       )}
-      <h1 className={"text-md"}>
+      <h1 className={"md:text-md sm:text-sm lg:text-3xl"}>
         Score du match à la mi-temps : {match.stats.ht_score}
       </h1>
-      <h1 className={"text-md"}>
+      <h1 className={"md:text-md sm:text-sm lg:text-3xl"}>
         Score du match final : {match.stats.ft_score}
       </h1>
       <div className={"grid grid-cols-2 gap-4 p-5 text-center"}>

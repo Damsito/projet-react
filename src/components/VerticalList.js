@@ -5,16 +5,14 @@ function VerticalList({ matches }) {
     return <h2>Aucun match ne correspond à votre recherche.</h2>;
   }
   return (
-    <div className="flex flex-wrap -m-1 md:-m-2 mt-2">
+    <div className="flex flex-wrap mt-2">
+      <div className="w-full sm:w-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-12 mt-4">
       {matches.map((match) => {
         return (
-          <div key={match.match_id} className="flex flex-wrap w-1/2 mt-3">
-            <div className="w-full p-1 md:p-2">
-              <Card match={match} />
-            </div>
-          </div>
+              <Card key={match.match_id} match={match} />
         );
       })}
+      </div>
     </div>
   );
 }

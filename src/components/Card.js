@@ -10,8 +10,8 @@ function Card({ match }) {
           <LogoEquipe name={match.away_team.name} url={match.away_team.logo} />
         </div>
       </Link>
-      <h3 className={"text-center text-md"}>
-        {match.home_team.name} VS {match.away_team.name}
+      <h3 className={"text-center sm:text-sm md:text-md lg:text-2xl"}>
+        <b>{match.home_team.name} VS {match.away_team.name}</b>
       </h3>
     </div>
   );

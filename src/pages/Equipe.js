@@ -25,7 +25,7 @@ function Equipe() {
     return m.name.toUpperCase().includes(matchQueryTitle.toUpperCase());
   });
   return (
-    <div className="flex flex-wrap -m-1 md:-m-2 mt-2 p-3">
+    <div className="flex flex-wrap mt-2 p-3">
       <Input
         value={value}
         submitButton={submitButton}
@@ -33,15 +33,13 @@ function Equipe() {
         placeholder={"Equipe"}
       />
       <SelectCountry value={selectValue} handleChange={handleChangeSelect} />
-      {teams.map((team) => {
-        return (
-          <div key={team.team_id} className="flex flex-wrap w-1/2 mt-3">
-            <div className="w-full p-1 md:p-2">
-              <Team team={team} />
-            </div>
-          </div>
-        );
-      })}
+      <div style={{width: "100%"}} className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 mt-4">
+        {teams.map((team) => {
+          return (
+                <Team key={team.team_id} team={team} />
+          );
+        })}
+      </div>
     </div>
   );
 }

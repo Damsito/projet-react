@@ -9,17 +9,18 @@ const SelectCountry = React.memo(({ value, handleChange }) => {
   console.log(countries);
     return (
         <div className={"flex w-full justify-center"}>
-          <form className="w-full max-w-sm mb-1 ">
+          <form className="w-full sm:max-w-sm md:max-w-md lg:max-w-3xl mb-1">
             <div className="flex items-center border-b border-teal-500 py-2 ">
               <select
                   value={value}
                   onChange={handleChange}
-                  className="form-select form-control  form-select-sm appearance-none
+                  className="form-select form-control  sm:form-select-sm lg:form-select-lg appearance-none
             block
             w-full
             px-2
             py-1
-            text-sm
+            sm:text-sm
+            lg:text-2xl
             font-normal
             text-gray-700
             bg-white bg-clip-padding bg-no-repeat
@@ -37,7 +38,8 @@ const SelectCountry = React.memo(({ value, handleChange }) => {
                     </option>
                 ))}
               </select>
-              <button className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 rounded">
+              <button className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500
+               hover:border-teal-700 sm:text-sm lg:text-2xl border-4 text-white py-1 rounded  ml-5">
                 Rechercher un pays
               </button>
             </div>
