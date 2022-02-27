@@ -1,12 +1,12 @@
 import React from "react";
-function SelectCompetition({ value, handleChange }) {
+const SelectCompetition = React.memo(({ selectValue, handleChangeSelect }) => {
   return (
     <div className={"flex w-full justify-center"}>
       <form className="w-full max-w-sm mb-1 ">
         <div className="flex items-center border-b border-teal-500 py-2 ">
           <select
-            value={value}
-            onChange={handleChange}
+            value={selectValue}
+            onChange={handleChangeSelect}
             className="form-select form-control  form-select-sm appearance-none
             block
             w-full
@@ -34,6 +34,6 @@ function SelectCompetition({ value, handleChange }) {
       </form>
     </div>
   );
-}
+})
 
 export default SelectCompetition;

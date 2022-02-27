@@ -7,35 +7,34 @@ import Input from "../components/Input";
 
 function Equipe() {
   const [searchParams, setSearchParams] = useSearchParams();
+  let matchQueryCountry = searchParams.get("pays") || "42";
   let matchQueryTitle = searchParams.get("q") || "";
-
-  function putAllQueryParameters({ pays }) {
+  const [value, setValue] = useState(matchQueryTitle);
+  const [selectedValue, setSelectedValue] = useState(matchQueryCountry);
+  const putAllQueryParameters = (valueProps = null, selectValueProps = null) => {
     let query;
-    if (value) {
-      query = { q: value };
+    if(valueProps){
+      query = {q: valueProps}
     }
-    if (pays) {
-      query = { ...query, pays };
+    if(selectValueProps || selectedValue){
+      query = {...query, pays: selectValueProps || selectedValue}
     }
     setSearchParams(query);
   }
-  let matchQueryCountry = searchParams.get("pays") || "42";
-  const [value, setValue] = useState(matchQueryTitle);
-  const [selectedValue, setSelectedValue] = useState(matchQueryCountry);
 
   const handleChangeSelect = (event) => {
     setSelectedValue(event.target.value);
-    putAllQueryParameters({ pays: event.target.value || selectedValue });
+    putAllQueryParameters(value, event.target.value);
   };
   const handleChange = (event) => {
     setValue(event.target.value);
     if (event.key === "Enter") {
-      putAllQueryParameters({ pays: selectedValue || null });
+      putAllQueryParameters(value);
     }
   };
   const submitButton = (event) => {
     event.preventDefault();
-    putAllQueryParameters({ pays: selectedValue || null });
+    putAllQueryParameters(value);
   };
   const dispatch = useDispatch();
   useEffect(() => {
@@ -45,7 +44,6 @@ function Equipe() {
   let teams = data.filter((m) => {
     return m.name.toUpperCase().includes(matchQueryTitle.toUpperCase());
   });
-  console.log(teams);
   return (
     <div className="flex flex-wrap -m-1 md:-m-2 mt-2 p-3">
       <Input

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import VerticalList from "../components/VerticalList";
 import { useSearchParams } from "react-router-dom";
@@ -9,35 +9,35 @@ function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   let matchQueryTitle = searchParams.get("q") || "";
   let matchQueryCompetition = searchParams.get("competition") || "352";
-  function putAllQueryParameters({ competition }) {
+
+  const [value, setValue] = useState(matchQueryTitle);
+  const [selectValue, setSelectValue] = useState(matchQueryCompetition);
+
+  const putAllQueryParameters = (valueProps = null, selectValueProps = null) => {
     let query;
-    if (value) {
-      query = { q: value };
+    if(valueProps){
+      query = {q: valueProps}
     }
-    if (competition) {
-      query = { ...query, competition };
+    if(selectValueProps || selectValue){
+      query = {...query, competition: selectValueProps || selectValue}
     }
-    console.log(query);
-    console.log(value);
-    console.log(competition);
     setSearchParams(query);
   }
-  const [value, setValue] = useState(matchQueryTitle);
-  const [selectedValue, setSelectedValue] = useState(matchQueryCompetition);
-
   const handleChange = (event) => {
     setValue(event.target.value);
     if (event.key === "Enter") {
-      putAllQueryParameters({ competition: selectedValue || null });
+      putAllQueryParameters(event.target.value);
     }
   };
+
   const handleChangeSelect = (event) => {
-    setSelectedValue(event.target.value);
-    putAllQueryParameters({ competition: event.target.value || selectedValue });
+    setSelectValue(event.target.value);
+    putAllQueryParameters(value, event.target.value);
   };
+
   const submitButton = (event) => {
     event.preventDefault();
-    putAllQueryParameters({ competition: selectedValue || null });
+    putAllQueryParameters(value);
   };
   const dispatch = useDispatch();
   useEffect(() => {
@@ -60,8 +60,8 @@ function Home() {
           handleChange={handleChange}
         />
         <SelectCompetition
-          value={selectedValue}
-          handleChange={handleChangeSelect}
+            selectValue={selectValue}
+            handleChangeSelect={handleChangeSelect}
         />
         <VerticalList matches={matches} />
       </div>
