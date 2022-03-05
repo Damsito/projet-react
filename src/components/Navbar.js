@@ -1,22 +1,27 @@
-import {Link, NavLink, useLocation, useResolvedPath} from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 function Navbar() {
-  let location = useLocation()
-  let activeClass = "block py-2 pr-4 pl-3 text-white bg-blue-700 sm:text-sm lg:text-2xl rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
-  let normalClass = "block py-2 pr-4 pl-3 text-gray-700 border-b sm:text-sm lg:text-2xl border-gray-100 hover:bg-gray-50 md:hover:bg-transparent" +
-      " md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400" +
-      " md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+  let location = useLocation();
+  let activeClass =
+    "block py-2 pr-4 pl-3 text-white bg-blue-700 sm:text-sm lg:text-2xl rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white";
+  let normalClass =
+    "block py-2 pr-4 pl-3 text-gray-700 border-b sm:text-sm lg:text-2xl border-gray-100 hover:bg-gray-50 md:hover:bg-transparent" +
+    " md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400" +
+    " md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700";
   let activeObject = {
     home: false,
-    equipes: false
-  }
-  if(location.pathname === '/equipes'){
-    activeObject.equipes = true
+    equipes: false,
+  };
+  if (location.pathname === "/equipes") {
+    activeObject.equipes = true;
   } else {
-    activeObject.home = true
+    activeObject.home = true;
   }
   return (
-    <nav style={{backgroundColor: 'aliceblue'}} className="border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
+    <nav
+      style={{ backgroundColor: "aliceblue" }}
+      className="border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800"
+    >
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link to="/" className="flex">
           <img src="/logo.png" alt="logo" />

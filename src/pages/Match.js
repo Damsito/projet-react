@@ -23,12 +23,15 @@ function Match() {
   if (!match) {
     return null;
   }
-  console.log(match);
   return (
     <div className={"text-center mt-3"}>
-      <h1 className={"md:text-md sm:text-sm lg:text-3xl"}><b>{match.group.group_name}</b></h1>
+      <h1 className={"md:text-md sm:text-sm lg:text-3xl"}>
+        <b>{match.group.group_name}</b>
+      </h1>
       <Card match={match} />
-      <h1 className={"md:text-md sm:text-sm lg:text-3xl"}>Début du match : {start_date}</h1>
+      <h1 className={"md:text-md sm:text-sm lg:text-3xl"}>
+        Début du match : {start_date}
+      </h1>
       {match.venue && match.venue.name && (
         <h1 className={"md:text-md sm:text-sm lg:text-3xl"}>
           Lieu du match : {match.venue.name} - {match.venue.city}

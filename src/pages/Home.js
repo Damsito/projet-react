@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import VerticalList from "../components/VerticalList";
 import Input from "../components/Input";
@@ -6,15 +6,15 @@ import SelectCompetition from "../components/SelectCompetition";
 import useSearch from "../components/Hooks/useSearch";
 
 function Home() {
-  const  {
+  const {
     value,
     selectValue,
     matchQueryTitle,
     matchQuerySelect,
     handleChange,
     submitButton,
-    handleChangeSelect
-  } = useSearch("competition", "352")
+    handleChangeSelect,
+  } = useSearch("competition", "352");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({ type: "FETCH_MATCHES", select: matchQuerySelect });
@@ -36,8 +36,8 @@ function Home() {
           handleChange={handleChange}
         />
         <SelectCompetition
-            selectValue={selectValue}
-            handleChangeSelect={handleChangeSelect}
+          selectValue={selectValue}
+          handleChangeSelect={handleChangeSelect}
         />
         <VerticalList matches={matches} />
       </div>

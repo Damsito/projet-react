@@ -27,14 +27,16 @@ const SelectCompetition = React.memo(({ selectValue, handleChangeSelect }) => {
             <option value="352">Premier League</option>
             <option value="1243">ChampionsLeague</option>
           </select>
-          <button className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 lg:text-2xl
-           border-teal-500 hover:border-teal-700 sm:text-sm border-4 text-white py-1 rounded">
+          <button
+            className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 lg:text-2xl
+           border-teal-500 hover:border-teal-700 sm:text-sm border-4 text-white py-1 rounded"
+          >
             Rechercher une compétition
           </button>
         </div>
       </form>
     </div>
   );
-})
+});
 
 export default SelectCompetition;
