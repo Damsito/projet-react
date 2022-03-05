@@ -22,6 +22,7 @@ describe("Statistique", () => {
         }
         render(<Statistique stat={stat} />);
 
+        // eslint-disable-next-line array-callback-return
         Object.entries(stat).map((s) => {
              const linkElement = screen.queryByTestId(s[0])
              expect(linkElement).toBeInTheDocument();
