@@ -29,7 +29,7 @@ function Home() {
   });
   return (
     <section className="overflow-hidden text-gray-700 ">
-      <div className="w-full mx-auto sm:p-6 lg:p-12">
+      <div className="w-full mx-auto p-3 sm:p-6 lg:p-12">
         <Input
           value={value}
           submitButton={submitButton}

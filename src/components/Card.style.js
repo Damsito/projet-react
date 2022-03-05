@@ -13,7 +13,7 @@ const useCardStyles = createUseStyles((theme) => ({
     justifyContent: "center",
   },
   h3: {
-    textContent: "center",
+    textAlign: "center",
   },
 }));
 
